@@ -41,7 +41,7 @@ export async function getThreatTrends(days = 7) {
       threat_type,
       COUNT(*) as count
     FROM threats
-    WHERE detected_at >= NOW() - INTERVAL '${days} days'
+    WHERE detected_at >= NOW() - (${days} || ' days')::interval
     GROUP BY DATE(detected_at), threat_type
     ORDER BY date DESC
   `
