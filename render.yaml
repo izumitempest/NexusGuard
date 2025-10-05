@@ -1,0 +1,16 @@
+# render.yaml
+services:
+  - type: web
+    name: nexusguard
+    env: node
+    buildCommand: pnpm install --no-frozen-lockfile && pnpm run build
+    startCommand: pnpm run start
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: NEXT_PUBLIC_API_BASE
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: NODE_VERSION
+        value: 22.16.0
